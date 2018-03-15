@@ -1,0 +1,66 @@
+<form name="produtoForm" ng-submit="produtoForm.$valid && gravaProduto()" novalidate>
+
+	<fieldset>
+		<legend>Cadatro de Produtos</legend>
+
+		<div class="alert alert-danger ng-cloak" ng-show="produtoForm.$submitted && produtoForm.$invalid">
+			<h4>Verifique os erros abaixo:</h4>
+			<ul>
+				<li ng-show="produtoForm.nome.$error.required">Digite o Nome.</li>
+				<li ng-show="produtoForm.nome.$error.minlength">O Nome deve ter no m&iacute;nimo 3 caracteres.</li>
+				<li ng-show="produtoForm.descricao.$error.required">Digite a Descricão.</li>
+				<li ng-show="produtoForm.descricao.$error.minlength">A descrição deve ter no m&iacute;nimo 3 caracteres.</li>
+				<li ng-show="produtoForm.urlImagem.$error.required">Digite a Url da Imagem.</li>
+				<li ng-show="produtoForm.urlImagem.$error.minlength">A Url da Imagem deve ter no m&iacute;nimo 3 caracteres.</li>
+			</ul>
+		</div>
+
+		<div class="row">
+
+			<div class="form-group col-md-6">
+				<label>Nome</label> <input type="text" name="nome" ng-model="Produto.nome" class="form-control" ng-required="true" ng-minlength="3"
+					maxlength="255" />
+			</div>
+
+			<div class="form-group col-md-6">
+				<label>Descricão</label> <input type="text" ng-model="Produto.descricao" name="descricao" class="form-control" ng-required="true" ng-minlength="3"
+					maxlength="255" />
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="form-group col-md-6">
+				<label>Url Imagem</label> <input type="text" name="urlImagem" ng-model="Produto.urlImagem" class="form-control" ng-required="true"
+					ng-minlength="3" maxlength="255" />
+
+			</div>
+
+			<div class="form-group col-md-6">
+				<label>Data cadastro</label>
+				<div style="padding-top: 7px; font-size: large; font-weight: bold;">{{Produto.dataCadastro | date:'dd/MM/yyyy' }}</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="form-group col-md-6">
+				<img ng-src="{{Produto.urlImagem}}" class="img-thumbnail" />
+			</div>
+			
+			<div class="form-group col-md-6">
+				<br> <a href="#/lista-produtos">
+					<button class="btn btn-primary">VOLTAR</button>
+				</a> <input type="submit" value="SALVAR" class="btn btn-primary" />
+			</div>
+		</div>
+
+
+
+	</fieldset>
+
+</form>
+
+
